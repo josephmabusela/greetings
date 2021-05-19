@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="greet.css"> 
+    <title>Greetings Project</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="greeting">
+            <h1>Greetings!</h1>
+        </div>
+        <div class="name-input">
+            <input type="text" name="" class="nameText" value="" placeholder="Enter a name">
+        </div>
+        <h3>Select Greeting Language</h3>
+        <div class="buttons">
+            <label class="">
+                <input type="radio" name="radioButton" class="radioButton" value="english">
+                <span class="label-body">English</span>
+            </label>
+            <label class="">
+                <input type="radio" name="radioButton" class="radioButton" value="french">
+                <span class="label-body">French</span>
+            </label>
+            <label class="">
+                <input type="radio" name="radioButton" class="radioButton" value="sepedi">
+                <span class="label-body">Sepedi</span>
+            </label>
+        </div>
+        <div class="name-display">
+            <button class="greetButton">Press Me!</button>
+            <button class="reset">Reset</button>
+            <textarea name="message" rows="2" cols="20" class="message" class="message"></textarea>
+        </div>
+        <div class="counter">
+
+            0
+        </div>
+    </div>
+
+
+<script src="greet.js"></script>
+<script src="factory.js"></script>
+</body>
+</html>
