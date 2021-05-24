@@ -2,14 +2,6 @@ function Greetings() {
     var namesList = [];
     var user;
 
-    function storeName(str) {
-        namesList.push(str)
-    }
-
-    function getStoreName() {
-        return namesList
-    }
-
     function setGreetLanguage(name, language) {
 
         if (language === "french") {
@@ -25,17 +17,29 @@ function Greetings() {
         }
     }
 
-    function greetedNames(names) {
-        user = names.toUpperCase().trim()
+    function storeName(str) {
+        user = str
     }
+
+    // function storeName(str) {
+    //     namesList.push(str)
+    // }
+
+    function getStoreName() {
+        return user
+    }
+
+    // function greetedNames(names) {
+    //     user = names
+    // }
 
     function setGreetedNames(userInput) {
         namesList = userInput
     }
 
-    function getGreetedName() {
-        return user
-    }
+    // function getGreetedName() {
+    //     return user
+    // }
 
     function exisitingNames() {
         if (!namesList.includes(user)) {
@@ -49,8 +53,8 @@ function Greetings() {
         storeName,
         setGreetLanguage,
         getStoreName,
-        greetedNames,
-        getGreetedName,
+        //greetedNames,
+        //getGreetedName,
         setGreetedNames,
         exisitingNames
     }
