@@ -76,6 +76,17 @@ function counterIncrease() {
         message.innerHTML = names
     }
 
+    if (greetInstance.getGreetedName() != "" && !names[greetInstance.getGreetedName()]) {
+        localStorage.setItem("names", greetInstance.exisitingNames())
+        count ++
+    }
+
+    //clear radio buttons
+    for(let i = 0; i < radioButton.length; i++){
+        radioButton[i].checked = false
+    
+    }
+
 }
 
 
@@ -86,20 +97,11 @@ greetButton.addEventListener("click", function() {
     greetInstance.setGreetedNames(names)
     greetInstance.storeName(nameText.value);
 
-    if (greetInstance.getGreetedName() != "" && !names[greetInstance.getGreetedName()] && nameText.value.match(/[a-zA-Z]/ig) && document.querySelector(".radioButton:checked")) {
-        localStorage.setItem("names", greetInstance.exisitingNames())
-        counterIncrease();
-    }
 
     showGreeting();
+    counterIncrease();
 
     nameText.value = "";
-
-    //clear radio buttons
-    for(let i = 0; i < radioButton.length; i++){
-        radioButton[i].checked = false
-    
-    }
 
 
 })
