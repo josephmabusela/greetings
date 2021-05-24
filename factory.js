@@ -1,40 +1,57 @@
 function Greetings() {
+    var namesList = [];
+    var user;
 
-    var radioStr;
-    var language;
-    //var french = "Bonjour";
-    //var sepedi = "Dumela";
-
-    function setRadioInput(str) {
-        language = str
+    function storeName(str) {
+        namesList.push(str)
     }
 
-    function gettRadioInput() {
-        return language
+    function getStoreName() {
+        return namesList
     }
 
-    function setGreetLanguage() {
-        if (gettRadioInput() === "french") {
-            radioStr = "Bonjour"
+    function setGreetLanguage(name, language) {
+
+        if (language === "french") {
+            return "Bonjour " + name
         }
 
-        if (gettRadioInput() === "english") {
-            radioStr = "Hello"
+        if (language === "english") {
+            return "Hello " + name
         }
 
-        if (gettRadioInput() === "sepedi") {
-            radioStr = "Dumela"
+        if (language === "sepedi") {
+            return "Dumela " + name
         }
     }
 
-    function getGreetLanguage() {
-        radioStr;
+    function greetedNames(names) {
+        user = names.toUpperCase().trim()
     }
+
+    function setGreetedNames(userInput) {
+        namesList = userInput
+    }
+
+    function getGreetedName() {
+        return user
+    }
+
+    function exisitingNames() {
+        if (!namesList.includes(user)) {
+            namesList.push(user);
+        }
+        return namesList
+    }
+
 
     return {
-        setRadioInput,
+        storeName,
         setGreetLanguage,
-        getGreetLanguage,
-        gettRadioInput
+        getStoreName,
+        greetedNames,
+        getGreetedName,
+        setGreetedNames,
+        exisitingNames
     }
 }

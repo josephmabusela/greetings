@@ -1,5 +1,5 @@
 // get references to the input field
-const nameText = document.querySelector(".name-display");
+const nameText = document.querySelector(".nameText");
 
 // get references to the radio buttons
 const radioButton = document.querySelector(".radioButton");
@@ -29,11 +29,11 @@ function showGreeting() {
         //greetInstance.getGreetLanguage(radioBtn.value);
     }
 
-    greetInstance.setGreetLanguage(checkedLang);
-    greetInstance.getGreetLanguage();
+    greetInstance.setGreetLanguage(nameText.value, checkedLang);
+    //greetInstance.getGreetLanguage();
 
     if (nameText.value !== "") {
-        message.innerHTML = greetInstance.gettRadioInput() + nameText.value
+        message.innerHTML = greetInstance.setGreetLanguage(nameText.value, checkedLang);
     }
 
     // prompt user to enter a name if they havent
@@ -47,27 +47,68 @@ function showGreeting() {
     }
 }
 
-let counter = 0;
 
-// initialize the counter in local storage
-if (localStorage["counter"]) {
-    // make counter equal the value in local storage
-    counter = localStorage["counter"];
-    counter ++
+function counterIncrease() {
+        
+    let count = localStorage["counter"] || 0;
+    count ++
 
+    localStorage.setItem("counter", count);
     // display the local storage value
-    counterElement.innerHTML = counter;
+    counterElement.innerHTML = localStorage.getItem("counter");
+
+    // // initialize the counter in local storage
+    // if (localStorage["counter"]) {
+    //     // make counter equal the value in local storage
+    //     counter = localStorage["counter"];
+    //     counter ++
+
+        
+    // }
+
+    // initialize names to an empty array
+    let names = [];
+
+    //initialize names to equal local storage
+    if (localStorage["names"]) {
+        names = localStorage["names"]
+
+        message.innerHTML = names
+    }
+
 }
 
-// initialize names to an empty array
-let names = {};
-
-// initialize names to equal local storage
-if (localStorage["names"]) {
-    names = localStorage["names"]
-
-    message.innerHTML = names
-}
 
 // click handler for displaying the greetings
-greetButton.addEventListener("click", showGreeting);
+greetButton.addEventListener("click", function() {
+
+    var names = [].concat(localStorage.getItem("names").split(","))
+    greetInstance.setGreetedNames(names)
+    greetInstance.storeName(nameText.value);
+
+    if (greetInstance.getGreetedName() != "" && !names[greetInstance.getGreetedName()] && nameText.value.match(/[a-zA-Z]/ig) && document.querySelector(".radioButton:checked")) {
+        localStorage.setItem("names", greetInstance.exisitingNames())
+        counterIncrease();
+    }
+
+    showGreeting();
+
+    nameText.value = "";
+
+    //clear radio buttons
+    for(let i = 0; i < radioButton.length; i++){
+        radioButton[i].checked = false
+    
+    }
+
+
+})
+
+// click handler for reset button
+reset.addEventListener("click", function() {
+    localStorage.setItem("names", [])
+    localStorage.setItem("counter", 0)
+    counterElement.innerHTML = localStorage["counter"]
+    nameText.innerHTML = ""
+
+})
