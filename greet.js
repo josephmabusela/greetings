@@ -29,11 +29,12 @@ function showGreeting() {
         //greetInstance.getGreetLanguage(radioBtn.value);
     }
 
-    greetInstance.setGreetLanguage(nameText.value, checkedLang);
-    //greetInstance.getGreetLanguage();
+    greetInstance.setGreetLanguage(checkedLang);
+    greetInstance.getGreetLanguage();
+    greetInstance.setGreetings()
 
     if (nameText.value !== "") {
-        message.innerHTML = greetInstance.setGreetLanguage(nameText.value, checkedLang);
+        message.innerHTML = greetInstance.getGreetings() + nameText.value;
     }
 
     // prompt user to enter a name if they havent
@@ -50,7 +51,7 @@ function showGreeting() {
 
 function counterIncrease() {
     
-    let count = localStorage["counter"] || 0;
+    let count = Number(localStorage.getItem("counter")) || 0;
     count ++
 
     localStorage.setItem("counter", count);

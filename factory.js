@@ -1,45 +1,50 @@
 function Greetings() {
     var namesList = [];
     var user;
+    var lang;
+    var greet;
 
-    function setGreetLanguage(name, language) {
+    function setGreetLanguage(language) {
+        lang = language
+    }
 
-        if (language === "french") {
-            return "Bonjour " + name
+    function getGreetLanguage() {
+        return lang
+    }
+
+    function setGreetings() {
+        if (getGreetLanguage() === "french") {
+            greet =  "Bonjour "
         }
 
-        if (language === "english") {
-            return "Hello " + name
+        if (getGreetLanguage() === "english") {
+            greet =  "Hello "
         }
 
-        if (language === "sepedi") {
-            return "Dumela " + name
+        if (getGreetLanguage() === "sepedi") {
+            greet =  "Dumela ";
         }
+    }
+
+    function getGreetings() {
+        return greet
     }
 
     function storeName(str) {
-        user = str
+        user = str.trim()
     }
-
-    // function storeName(str) {
-    //     namesList.push(str)
-    // }
 
     function getStoreName() {
         return user
     }
 
-    // function greetedNames(names) {
-    //     user = names
-    // }
-
     function setGreetedNames(userInput) {
         namesList = userInput
     }
 
-    // function getGreetedName() {
-    //     return user
-    // }
+    function getGreetedNames() {
+        return namesList
+    }
 
     function exisitingNames() {
         if (!namesList.includes(user)) {
@@ -53,9 +58,11 @@ function Greetings() {
         storeName,
         setGreetLanguage,
         getStoreName,
-        //greetedNames,
-        //getGreetedName,
+        getGreetLanguage,
+        getGreetedNames,
         setGreetedNames,
-        exisitingNames
+        exisitingNames,
+        setGreetings,
+        getGreetings
     }
 }
