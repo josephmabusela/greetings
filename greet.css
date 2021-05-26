@@ -10,7 +10,10 @@ body {
 }
 
 .counter {
-    font-size: 300%;
+    font-size: 4rem;
+    align-items: center;
+    display: flex;
+    float: right;
 }
 
 h1, h2, h3 {

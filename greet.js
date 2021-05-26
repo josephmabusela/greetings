@@ -35,16 +35,37 @@ function showGreeting() {
 
     if (nameText.value !== "") {
         message.innerHTML = greetInstance.getGreetings() + nameText.value;
+        message.style.color = "black"
+    }
+
+    // prompt usser to enter a valid name with no numbers or characters
+    if (!nameText.value.match(/[a-zA-Z]/ig)) {
+        message.innerHTML = "Please enter valid name"
+        message.style.color = "red"
+
+        setTimeout(() => {
+            message.innerHTML = ""
+        }, 3000);
     }
 
     // prompt user to enter a name if they havent
     if (nameText.value === "") {
-        message.innerHTML = "Enter a name"
+        message.innerHTML = "Enter a name";
+        message.style.color = "red"
+
+        setTimeout(() => {
+            message.innerHTML = ""
+        }, 3000);
     }
 
     // prompt user to select a language if they havent
     if (!radioBtn) {
-        message.innerHTML = "Select a language"
+        message.innerHTML = "Select a language";
+        message.style.color = "red";
+
+        setTimeout(() => {
+            message.innerHTML = ""
+        }, 3000);
     }
 }
 
@@ -90,7 +111,7 @@ greetButton.addEventListener("click", function() {
     greetInstance.setGreetedNames(names)
     greetInstance.storeName(nameText.value);
 
-    if (greetInstance.getStoreName() != "" && !names.includes(greetInstance.getStoreName()) && nameText.value && document.querySelector(".radioButton:checked"))  {
+    if (greetInstance.getStoreName() != "" && !names.includes(greetInstance.getStoreName()) && nameText.value.match(/[a-zA-Z]/ig) && document.querySelector(".radioButton:checked"))  {
         localStorage.setItem("names", greetInstance.exisitingNames())
         counterIncrease();
     }
@@ -99,7 +120,9 @@ greetButton.addEventListener("click", function() {
 
     nameText.value = "";
 
+    // document.querySelector(".radioButton:uncheck")
 
+    radioBtn = document.querySelector(".radioButton:checked").checked = false;
 })
 
 // click handler for reset button
@@ -107,6 +130,6 @@ reset.addEventListener("click", function() {
     localStorage.setItem("names", [])
     localStorage.setItem("counter", 0)
     counterElement.innerHTML = localStorage["counter"]
-    nameText.innerHTML = ""
+    message.innerHTML = ""
 
 })
