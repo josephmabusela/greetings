@@ -109,7 +109,10 @@ function counterIncrease() {
 // click handler for displaying the greetings
 greetButton.addEventListener("click", function() {
 
+    //radioBtn = document.querySelector(".radioButton:checked");
+
     var names = [].concat(localStorage.getItem("names").split(","))
+
     greetInstance.setGreetedNames(names)
     greetInstance.storeName(nameText.value);
 
@@ -124,7 +127,7 @@ greetButton.addEventListener("click", function() {
 
     // document.querySelector(".radioButton:uncheck")
     radioBtn = document.querySelector(".radioButton:checked").checked = false;
-})
+});
 
 // click handler for reset button
 reset.addEventListener("click", function() {

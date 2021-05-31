@@ -31,7 +31,7 @@ function Greetings() {
     }
 
     function storeName(str) {
-        user = str.trim()
+        user = str.trim().toLowerCase();
     }
 
     function getStoreName() {
