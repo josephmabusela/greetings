@@ -16,6 +16,12 @@ body {
     float: right;
 }
 
+.errorText {
+    width: 50%;
+    margin: auto;
+    padding: 1em;
+}
+
 h1, h2, h3 {
     width: 50%;
     margin: auto;

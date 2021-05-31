@@ -1,6 +1,8 @@
 // get references to the input field
 const nameText = document.querySelector(".nameText");
 
+const errorText = document.querySelector(".errorText");
+
 // get references to the radio buttons
 const radioButton = document.querySelector(".radioButton");
 
@@ -40,35 +42,39 @@ function showGreeting() {
 
     // prompt usser to enter a valid name with no numbers or characters
     if (!nameText.value.match(/[a-zA-Z]/ig)) {
-        message.innerHTML = "Please enter valid name"
-        message.style.color = "red"
+        errorText.innerHTML = "Please enter valid name"
+        errorText.style.color = "red"
 
         setTimeout(() => {
-            message.innerHTML = ""
+            errorText.innerHTML = ""
         }, 3000);
     }
 
     // prompt user to enter a name if they havent
     if (nameText.value === "") {
-        message.innerHTML = "Enter a name";
-        message.style.color = "red"
+        errorText.innerHTML = "Enter a name";
+        errorText.style.color = "red"
 
         setTimeout(() => {
-            message.innerHTML = ""
+            errorText.innerHTML = ""
         }, 3000);
     }
 
     // prompt user to select a language if they havent
     if (!radioBtn) {
-        message.innerHTML = "Select a language";
-        message.style.color = "red";
+        errorText.innerHTML = "Select a language";
+        errorText
+        .style.color = "red";
 
         setTimeout(() => {
-            message.innerHTML = ""
+            errorText.innerHTML = ""
         }, 3000);
     }
 }
 
+if (localStorage.getItem("counter")) {
+    counterElement.innerHTML = localStorage.getItem("counter")
+}
 
 function counterIncrease() {
     
@@ -81,11 +87,7 @@ function counterIncrease() {
 
     // initialize names to an empty array
     let names = [];
-
-    if (localStorage.getItem("counter")) {
-        counterElement.innerHTML = localStorage.getItem("counter")
-    }
-
+    
     if (localStorage.getItem("counter") == NaN ) {
         localStorage.setItem("counter", 0)
     }
@@ -121,7 +123,6 @@ greetButton.addEventListener("click", function() {
     nameText.value = "";
 
     // document.querySelector(".radioButton:uncheck")
-
     radioBtn = document.querySelector(".radioButton:checked").checked = false;
 })
 
@@ -130,6 +131,11 @@ reset.addEventListener("click", function() {
     localStorage.setItem("names", [])
     localStorage.setItem("counter", 0)
     counterElement.innerHTML = localStorage["counter"]
-    message.innerHTML = ""
+    errorText.innerHTML = "Counter has been reset!"
+    errorText.style.color = "green";
+
+    setTimeout(() => {
+        errorText.innerHTML = ""
+    }, 3000);
 
 })
