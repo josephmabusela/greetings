@@ -27,15 +27,16 @@ function Greetings() {
     }
 
     function getGreetings() {
+
         return greet
     }
 
     function storeName(str) {
-        user = str.trim().toLowerCase();
+       user = str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
 
     function getStoreName() {
-        return user
+        return user;
     }
 
     function setGreetedNames(userInput) {

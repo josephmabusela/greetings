@@ -35,8 +35,8 @@ function showGreeting() {
     greetInstance.getGreetLanguage();
     greetInstance.setGreetings()
 
-    if (nameText.value !== "") {
-        message.innerHTML = greetInstance.getGreetings() + nameText.value;
+    if (nameText.value !== "" && radioBtn) {
+        message.innerHTML = greetInstance.getGreetings() + nameText.value.charAt(0).toUpperCase() + nameText.value.slice(1);
         message.style.color = "black"
     }
 
@@ -137,8 +137,6 @@ reset.addEventListener("click", function() {
     errorText.innerHTML = "Counter has been reset!"
     errorText.style.color = "green";
 
-    setTimeout(() => {
-        errorText.innerHTML = ""
-    }, 3000);
+    message.innerHTML = ""
 
 })
