@@ -123,7 +123,9 @@ greetButton.addEventListener("click", function() {
 
     showGreeting();
 
-    nameText.value = "";
+    setTimeout(() => {
+        message.innerHTML = ""
+    }, 3000);
 
     // document.querySelector(".radioButton:uncheck")
     radioBtn = document.querySelector(".radioButton:checked").checked = false;
@@ -138,5 +140,9 @@ reset.addEventListener("click", function() {
     errorText.style.color = "green";
 
     message.innerHTML = ""
+
+    setTimeout(() => {
+        errorText.innerHTML = ""
+    }, 3000);           
 
 })
